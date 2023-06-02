@@ -24,5 +24,10 @@
 
 const server = require("./App")
 const PORT = 3001
+const { conn } = require("./DB_connection");
 
-server.listen(PORT, () => console.log("Listening on port 3001"))
+
+
+conn.sync({force: true}) //Dropear la base de datos cuando está en true. Al terminar la base de desarrollo cambiar a false para preservar los datos.
+
+server.listen(PORT, () => console.log("Listening on port 3001"))   
